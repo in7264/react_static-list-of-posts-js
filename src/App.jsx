@@ -12,21 +12,13 @@ const processPosts = () => {
   }));
 };
 
-const processComments = () => {
-  return commentsFromServer.map(comment => ({
-    ...comment,
-    post: postsFromServer.find(post => post.id === comment.postId) || null,
-  }));
-};
-
 export const App = () => {
   const posts = processPosts();
-  const comments = processComments();
 
   return (
     <section className="App">
       <h1 className="App__title">Static list of posts</h1>
-      <PostList posts={posts} comments={comments} />
+      <PostList posts={posts} />
     </section>
   );
 };
